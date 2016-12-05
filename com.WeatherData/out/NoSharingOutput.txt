@@ -1,0 +1,80 @@
+
+
+Run1
+ StationID :: 	TMax Avg
+
+
+Run2
+ StationID :: 	TMax Avg
+
+
+Run3
+ StationID :: 	TMax Avg
+
+
+Run4
+ StationID :: 	TMax Avg
+
+
+Run5
+ StationID :: 	TMax Avg
+
+
+Run6
+ StationID :: 	TMax Avg
+
+
+Run7
+ StationID :: 	TMax Avg
+
+
+Run8
+ StationID :: 	TMax Avg
+
+
+Run9
+ StationID :: 	TMax Avg
+
+
+Run10
+ StationID :: 	TMax Avg
+
+
+Run1
+ StationID :: 	TMax Avg
+
+
+Run2
+ StationID :: 	TMax Avg
+
+
+Run3
+ StationID :: 	TMax Avg
+
+
+Run4
+ StationID :: 	TMax Avg
+
+
+Run5
+ StationID :: 	TMax Avg
+
+
+Run6
+ StationID :: 	TMax Avg
+
+
+Run7
+ StationID :: 	TMax Avg
+
+
+Run8
+ StationID :: 	TMax Avg
+
+
+Run9
+ StationID :: 	TMax Avg
+
+
+Run10
+ StationID :: 	TMax Avg

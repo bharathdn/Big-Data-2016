@@ -1,0 +1,19 @@
+
+
+Started loading data 
+
+Average Time :: 557.8
+Minimum Time :: 436
+Maximum Time :: 1152
+[1152, 630, 437, 461, 436, 470, 455, 478, 572, 487]
+
+calculating with Fib
+
+
+
+Started loading data 
+
+Average Time :: 10096.1
+Minimum Time :: 9192
+Maximum Time :: 13391
+[13391, 10083, 9932, 9462, 11508, 9340, 9192, 9436, 9375, 9242]
