@@ -60,6 +60,7 @@ public class FileHelper {
 			throws Exception {
 		Configuration conf = context.getConfiguration();
 		String modelPath = conf.get(Constants.MODEL);
+		System.out.println(modelPath);
 		FileSystem fs = FileSystem.get(URI.create(modelPath), conf);
 		FSDataOutputStream outputStream = fs.create(new Path(modelPath + key));
 		

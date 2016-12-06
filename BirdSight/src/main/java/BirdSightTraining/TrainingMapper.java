@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import Utils.Constants;
+
 public class TrainingMapper {
 	
 	public static class TrainerMapper 
@@ -14,16 +16,15 @@ public class TrainingMapper {
 				throws IOException, InterruptedException {
 
 			String line = value.toString();
-
 			String[] lineSplit = line.split(",");
+			
 			StringBuilder sb = new StringBuilder();
 			for(int i = 0 ; i < 27 ; i++){
-				sb.append(lineSplit[i]);
+				sb.append(lineSplit[i]).append(",");
 			}
 
 			sb.deleteCharAt(sb.length() - 1);
-			// 9 is column number for state in csv
-			Text state = new Text(lineSplit[9]);
+			Text state = new Text(lineSplit[Constants.STATE_INDEX]);
 			context.write(state, new Text(sb.toString()));
 		}
 
