@@ -13,6 +13,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.trees.RandomTree;
 import weka.core.SerializationHelper;
 
 public class FileHelper {
@@ -56,11 +57,12 @@ public class FileHelper {
 		return file.delete();
 	}
 	
-	public static void writeModelToFile(NaiveBayes classfier ,Reducer<Text, Text, Text, Text>.Context context, String key) 
+	public static void writeModelToFile(RandomTree classfier ,Reducer<Text, Text, Text, Text>.Context context, String key) 
 			throws Exception {
 		Configuration conf = context.getConfiguration();
-		String modelPath = conf.get(Constants.MODEL);
-		System.out.println(modelPath);
+		//String modelPath = conf.get(Constants.MODEL);
+		String modelPath = "model/";
+//		System.out.println("MODEL PATH ->" + modelPath);
 		FileSystem fs = FileSystem.get(URI.create(modelPath), conf);
 		FSDataOutputStream outputStream = fs.create(new Path(modelPath + key));
 		

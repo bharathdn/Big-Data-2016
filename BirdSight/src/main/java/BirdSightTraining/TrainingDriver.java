@@ -23,7 +23,7 @@ public class TrainingDriver {
 		FileHelper.deleteDir(new File(args[1]));
 		
 		job.setJarByClass(TrainingDriver.class);
-		job.setMapperClass(TrainingMapper.TrainerMapper.class);
+		job.setMapperClass(TrainPredictMapper.TrainerMapper.class);
 		job.setReducerClass(TrainingReducer.TrainerReducer.class);
 
 		job.setMapOutputKeyClass(Text.class);

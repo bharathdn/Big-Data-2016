@@ -78,19 +78,66 @@ public class Features {
 		Features features = new Features();
 		String[] textSplit = text.split(",");
 		
-		features.year = Integer.parseInt(textSplit[Constants.YEAR_INDEX].trim());
-		features.month = Integer.parseInt(textSplit[Constants.MONTH_INDEX].trim());
-		features.day = Integer.parseInt(textSplit[Constants.DAY_INDEX].trim());
-		features.time = Float.parseFloat(textSplit[Constants.TIME_INDEX].trim());
-		features.country = textSplit[Constants.COUNTRY_INDEX].trim();
-		features.state = textSplit[Constants.STATE_PROVINCE_INDEX].trim();
-		features.county = textSplit[Constants.COUNTY_INDEX].trim();
-		features.numberOfObservers = Integer.parseInt(textSplit[Constants.NUMBER_OBSERVERS_INDEX].trim());
-		
-		String agelaiusPhoeniceusValue = textSplit[Constants.Agelaius_phoeniceus_INDEX].trim();
-		features.agelaiusPhoeniceus = (agelaiusPhoeniceusValue.equals("?") ? 0 : Integer.parseInt(agelaiusPhoeniceusValue));
+		features.year = getIntegerValue(textSplit[Constants.YEAR_INDEX].trim());
+		features.month = getIntegerValue(textSplit[Constants.MONTH_INDEX].trim());
+		features.day = getIntegerValue(textSplit[Constants.DAY_INDEX].trim());
+		features.time = getFloatValue(textSplit[Constants.TIME_INDEX].trim());
+		features.country = getStringValue(textSplit[Constants.COUNTRY_INDEX].trim());
+		features.state = getStringValue(textSplit[Constants.STATE_PROVINCE_INDEX].trim());
+		features.county = getStringValue(textSplit[Constants.COUNTY_INDEX].trim());
+		features.numberOfObservers = getIntegerValue(textSplit[Constants.NUMBER_OBSERVERS_INDEX].trim());
+		features.agelaiusPhoeniceus = getAgelaiusPhoeniceusValue(textSplit[Constants.Agelaius_phoeniceus_INDEX].trim()); 
 		
 		return features;
 	}
 	
+	private static int getAgelaiusPhoeniceusValue(String value) {
+		int agelaiusPhoeniceus = 0;
+		if(value.equals("?") || value.equals("X"))  
+			agelaiusPhoeniceus = 0;
+		try {
+			if(Integer.parseInt(value) > 0)
+				agelaiusPhoeniceus = 1;
+			if(Integer.parseInt(value) == 0)
+				agelaiusPhoeniceus = 0;
+		} catch (Exception e) {
+			agelaiusPhoeniceus = 0;
+		}
+		
+		return agelaiusPhoeniceus;
+	}
+	
+	// Get Integer Value
+	private static int getIntegerValue(String value) {
+		int feature = 0;
+		if(value.equals("?") || value.equals("X"))  
+			feature = 0;
+		else
+			feature = Integer.parseInt(value);
+		
+		return feature;
+	}
+	
+	// Get Float Value
+	private static float getFloatValue(String value){
+		float feature = 0.0f;
+		if(value.equals("?") || value.equals("X"))  
+			feature = 0.0f;
+		else
+			feature = Float.parseFloat(value);
+		
+		return feature;
+	}
+	
+	// Get String value
+	private static String getStringValue(String value){
+		String feature = "0";
+		if(value.equals("?") || value.equals("X"))  
+			feature = "";
+		else
+			feature = value;
+		
+		return feature;
+	}
+
 }

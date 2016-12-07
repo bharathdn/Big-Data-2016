@@ -7,8 +7,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import Utils.Constants;
 
-public class TrainingMapper {
-	
+public class TrainPredictMapper {
+
 	public static class TrainerMapper 
 	extends Mapper<Object, Text, Text, Text> {
 
@@ -16,16 +16,17 @@ public class TrainingMapper {
 				throws IOException, InterruptedException {
 
 			String line = value.toString();
-			String[] lineSplit = line.split(",");
-			
-			StringBuilder sb = new StringBuilder();
-			for(int i = 0 ; i < 27 ; i++){
-				sb.append(lineSplit[i]).append(",");
-			}
+			if(!line.startsWith("SAMPLING_EVENT_ID") && line !=null) {	
+				String[] lineSplit = line.split(",");
+				StringBuilder sb = new StringBuilder();
+				for(int i = 0 ; i < 27 ; i++){
+					sb.append(lineSplit[i]).append(",");
+				}
 
-			sb.deleteCharAt(sb.length() - 1);
-			Text state = new Text(lineSplit[Constants.STATE_INDEX]);
-			context.write(state, new Text(sb.toString()));
+				sb.deleteCharAt(sb.length() - 1);
+				Text state = new Text(lineSplit[Constants.STATE_INDEX]);
+				context.write(state, new Text(sb.toString()));
+			}
 		}
 
 		@Override
