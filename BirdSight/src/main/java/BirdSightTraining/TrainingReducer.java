@@ -41,7 +41,7 @@ public class TrainingReducer {
 			}
 			
 			try {
-				FileHelper.writeModelToFile(randomTreeClassifier, context, key.toString());
+				FileHelper.writeClassifierToFile(randomTreeClassifier, context, key.toString());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

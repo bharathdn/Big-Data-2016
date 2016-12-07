@@ -3,16 +3,19 @@ package Utils;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.URI;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.Classifier;
 import weka.classifiers.trees.RandomTree;
 import weka.core.SerializationHelper;
 
@@ -57,15 +60,24 @@ public class FileHelper {
 		return file.delete();
 	}
 	
-	public static void writeModelToFile(RandomTree classfier ,Reducer<Text, Text, Text, Text>.Context context, String key) 
+	public static void writeClassifierToFile(RandomTree classfier, Reducer<Text, Text, Text, Text>.Context context, String key) 
 			throws Exception {
 		Configuration conf = context.getConfiguration();
-		//String modelPath = conf.get(Constants.MODEL);
 		String modelPath = "model/";
-//		System.out.println("MODEL PATH ->" + modelPath);
 		FileSystem fs = FileSystem.get(URI.create(modelPath), conf);
 		FSDataOutputStream outputStream = fs.create(new Path(modelPath + key));
 		
 		SerializationHelper.write(outputStream, classfier);
 	}
+	
+	public static Classifier readClassifierFromFile(Reducer<Text, Text, Text, NullWritable>.Context context, String key) 
+			throws Exception {
+		Configuration conf = context.getConfiguration();
+		String modelPath = "model/";
+		FileSystem fs = FileSystem.get(URI.create(modelPath), conf);
+		InputStream in = fs.open(new Path(modelPath + key));
+				
+		ObjectInputStream objectStream = new ObjectInputStream(in);
+		return (Classifier) objectStream.readObject();
+	} 
 }

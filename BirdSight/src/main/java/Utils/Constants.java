@@ -11,6 +11,7 @@ public class Constants {
 	
 
 	// Feature names
+	public final static String SAMPLING_EVENT_ID = "SAMPLING_EVENT_ID";
 	public final static String YEAR = "YEAR";
 	public final static String MONTH = "MONTH";
 	public final static String DAY = "DAY";
@@ -23,6 +24,7 @@ public class Constants {
 	public final static String Agelaius_phoeniceus = "Agelaius_phoeniceus";
 	
 	// Feature indices
+	public final static int SAMPLING_EVENT_ID_INDEX = 0;
 	public final static int YEAR_INDEX = 4;
 	public final static int MONTH_INDEX = 5;
 	public final static int DAY_INDEX = 6;

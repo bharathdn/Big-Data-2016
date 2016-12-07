@@ -16,7 +16,7 @@ public class TrainPredictMapper {
 				throws IOException, InterruptedException {
 
 			String line = value.toString();
-			if(!line.startsWith("SAMPLING_EVENT_ID") && line !=null) {	
+			if(!line.startsWith(Constants.SAMPLING_EVENT_ID) && line !=null) {	
 				String[] lineSplit = line.split(",");
 				StringBuilder sb = new StringBuilder();
 				for(int i = 0 ; i < 27 ; i++){
