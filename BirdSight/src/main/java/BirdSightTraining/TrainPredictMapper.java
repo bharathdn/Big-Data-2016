@@ -28,15 +28,6 @@ public class TrainPredictMapper {
 				context.write(state, new Text(sb.toString()));
 			}
 		}
-
-		@Override
-		protected void setup(Context context) throws IOException, InterruptedException {
-		}
-
-
-		@Override
-		protected void cleanup(Context context) throws IOException, InterruptedException {
-		}
 	}
 
 }

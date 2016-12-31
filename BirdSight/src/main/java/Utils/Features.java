@@ -92,6 +92,7 @@ public class Features {
 	}
 	
 	private static int getAgelaiusPhoeniceusValue(String value) {
+		value  = value.trim();
 		int agelaiusPhoeniceus = 0;
 		if(value.equals("?") || value.equals("X"))  
 			agelaiusPhoeniceus = 0;

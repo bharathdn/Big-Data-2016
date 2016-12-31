@@ -46,16 +46,6 @@ public class TrainingReducer {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		@Override
-		protected void setup(Context context) throws IOException, InterruptedException {
-		}
-		
-
-		@Override
-		protected void cleanup(Context context) throws IOException, InterruptedException {
-		}
 	}
 
 }

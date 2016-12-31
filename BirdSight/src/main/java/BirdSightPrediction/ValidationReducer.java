@@ -19,11 +19,11 @@ import weka.core.Attribute;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class PredictionReducer {
-
-	public static class PredictorReducer
+public class ValidationReducer {
+	
+	public static class ValidatorReducer
 	extends Reducer<Text, Text, Text, NullWritable> {
-		
+
 		public void reduce(Text key, Iterable<Text> values, Context context)
 				throws IOException, InterruptedException {
 			Map<String, Integer> results = new HashMap<>();
@@ -59,4 +59,5 @@ public class PredictionReducer {
 			return textSplit[Constants.SAMPLING_EVENT_ID_INDEX].trim();
 		}
 	}
+
 }
